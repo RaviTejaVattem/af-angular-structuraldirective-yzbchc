@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./show-all-show-few.component.css']
 })
 export class ShowAllShowFewComponent {
-  showAll: boolean = false;
+  showAll: boolean = true;
   @Output() emitShow = new EventEmitter<boolean>();
 
   emitValue(event) {

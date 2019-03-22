@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   numbers = [1, 2, 3, 4, 5, 6];
@@ -14,6 +15,6 @@ export class AppComponent {
   }
 
   constructor() {
-    // setInterval(() => { this.value = this.count++; }, 3000);
+
   }
 }
