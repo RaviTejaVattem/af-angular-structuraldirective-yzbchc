@@ -9,8 +9,8 @@ export class AppComponent {
   numbers = [1, 2, 3, 4, 5, 6];
   value = 4;
 
-  someFunction(event) {
-    console.log(event);
+  someFunction(event, i) {
+    console.log(event + " " + i);
   }
 
   constructor() {

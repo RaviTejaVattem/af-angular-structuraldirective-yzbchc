@@ -26,30 +26,29 @@ export class NgLoopDirective implements OnChanges, OnInit {
 
   constructor(private template: TemplateRef<any>,
     private container: ViewContainerRef,
-    private cfr: ComponentFactoryResolver) {
-    this.someFunc();
-  }
+    private cfr: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    
-  }
-
-  ngOnChanges() {
+    this.someFunc(this.showTheseOnly);
     this.cmpFactory = this.cfr.resolveComponentFactory(ShowAllShowFewComponent);
     this.cmpRef = this.container.createComponent(this.cmpFactory);
     this.cmpRef.instance['emitShow']
       .subscribe(v => {
         this.showTheseOnly = v ? this.appNgLoopCount : this.appNgLoopOf.length;
-        console.log(this.appNgLoopOf);
-        console.log('after app')
-        console.log(this.showTheseOnly);
-        this.someFunc();
-  console.log(this.container.get(0));
+        this.container.detach();
+        this.container.clear();
+        this.someFunc(this.showTheseOnly);
+        this.container.insert(this.cmpRef.hostView);
       });
+
   }
 
-  someFunc() {
-    for (const input of this.appNgLoopOf.slice(0, this.showTheseOnly)) {
+  ngOnChanges() {
+    console.log('onChanges');
+  }
+
+  someFunc(range) {
+    for (const input of this.appNgLoopOf.slice(0, range)) {
       this.container.createEmbeddedView(this.template, {
         $implicit: input,
         index: this.appNgLoopOf.indexOf(input),
