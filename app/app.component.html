@@ -1,0 +1,14 @@
+<br>
+<mat-chip-list>
+  	<mat-chip *appNgLoop="let nr of numbers;count:value;let i = index" (click)="someFunction($event)">
+		{{ nr }} - Foo Index: {{ i }}
+	</mat-chip>
+</mat-chip-list>
+
+
+<!-- <br>
+<mat-chip-list>
+	<mat-chip *appNgLoop="let nr of numbers;ount as '4'; index as i" (click)="someFunction($event)">
+		{{ nr }} - Foo Index: {{ i }}
+	</mat-chip>
+</mat-chip-list>  -->
